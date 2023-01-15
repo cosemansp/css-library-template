@@ -1,13 +1,23 @@
-/* props */
-@import "./props.sizes.css";
-@import "./props.colors.css";
-@import "./props.fonts.css";
-
-/* reset and base */
+/* 
+ * Reset and base 
+*/
+@import "./variables/colors.css";
+@import "./variables/fonts.css";
 @import "./base.css";
 
-/* components */
-@import "./button.css";
+/* 
+ * Components 
+ */
+@import "./components/button.css";
 
-/* utils */
-@import "./utils.css";
+/* 
+ * Utils 
+ * Uncomment when you want the utils 
+ *
+@import "./variables/sizes.css";
+@import "./utils/colors.css";
+@import "./utils/cursor.css";
+@import "./utils/position.css";
+@import "./utils/spacing.css";
+@import "./utils/visibility.css"; 
+*/

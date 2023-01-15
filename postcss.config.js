@@ -1,4 +1,8 @@
-let plugins = [require("postcss-import"), require("autoprefixer")()];
+/* prettier-ignore */
+const plugins = [
+  require("postcss-import"),
+  require("autoprefixer")()
+];
 
 if (process.env.NODE_ENV == "production")
   plugins.push(
