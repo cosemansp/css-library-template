@@ -1,5 +1,5 @@
 {
-  "name": "@cosemansp/css-library-template",
+  "name": "@namespace/my-lib",
   "version": "1.0.0",
   "description": "",
   "main": "dist/styles.min.css",
