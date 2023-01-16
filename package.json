@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "astro dev",
     "postcss": "postcss ./src/styles.css -d dist/",
-    "build": "rimraf dist/* && npm run postcss && cross-env NODE_ENV=production yarn postcss --ext .min.css",
-    "build:docs": "rimraf docs/* && astro build"
+    "build": "rimraf dist/* && npm run postcss && cross-env NODE_ENV=production yarn postcss --ext .min.css && yarn build:docs",
+    "build:docs": "astro build"
   },
   "dependencies": {},
   "devDependencies": {
