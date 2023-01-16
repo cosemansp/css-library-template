@@ -7,6 +7,7 @@ export default defineConfig({
   // add mx support
   integrations: [mdx()],
   srcDir: "./docs",
+  outDir: "./dist/docs",
 
   // setup syntax highlighting theme
   markdown: {

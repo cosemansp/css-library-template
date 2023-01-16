@@ -1,8 +1,8 @@
 {
   "name": "@namespace/my-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "dist/styles.min.css",
+  "main": "dist/styles.css",
   "keywords": [],
   "author": "Peter Cosemans",
   "license": "MIT",
@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "astro dev",
     "postcss": "postcss ./src/styles.css -d dist/",
-    "build": "rimraf dist/* && npm run postcss && cross-env NODE_ENV=production yarn postcss --ext .min.css"
+    "build": "rimraf dist/* && npm run postcss && cross-env NODE_ENV=production yarn postcss --ext .min.css",
+    "build:docs": "rimraf docs/* && astro build"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,5 +1,6 @@
 ---
 import "../../src/styles.css"
+import "../../src/variables/sizes.css"
 import "../../src/utils/color.css"
 import "../../src/utils/position.css"
 import "../../src/utils/spacing.css"
@@ -8,6 +9,15 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+// get all pages and filter out the index page
+const allPages = await Astro.glob('../pages/*.mdx');
+const links = allPages.map(item => {
+  return {
+    url: item.url,
+    title: item.frontmatter.title || item.url.substring(1)
+  }
+}).filter(item => item.url.length > 0)
 ---
 
 <!DOCTYPE html>
@@ -20,22 +30,57 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="container">
-      <slot />
+    <div class="wrapper">
+      <header><h1> My Awesome Css Library</h1></header>
+      <article>
+        <div>
+          <slot />
+        </div>
+      </article> 
+      <aside>
+        <ul>
+          <li><a href='/'>Introduction</a></li>
+          {links.map((item) => (
+            <li><a href={item.url || '/'}>{item.title}</a></li>
+          ))}
+        </ul>
+      </aside>
     </div>  
   </body>
 </html>
 <style is:global>
-  :root {
-  }
-  .container {
-    margin: 20px;
-  }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
       monospace;
   }
-  /* pre {
-    padding: 10px;
-  } */
+  header {
+    grid-area: header;
+    padding-left: 20px;
+  }
+  article {
+    grid-area: content;
+    padding-left: 20px;
+  }
+  aside {
+    width: 200px;
+    grid-area: sidebar;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-areas: 
+      "header  header"
+      "sidebar content"
+      "footer  footer";
+  }
+  @media (max-width: 1024px) {
+    .wrapper {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "header"
+        "content"
+        "sidebar"
+        "footer";
+    }
+  }
 </style>
